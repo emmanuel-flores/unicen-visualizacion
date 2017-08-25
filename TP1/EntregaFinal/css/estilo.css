@@ -7,13 +7,22 @@ input {
   width: 90px;
 }
 
+canvas {
+  margin-bottom: 8px;
+}
+
 img {
   margin-top: 10px;
   width: 100%;
-  height: 100px;
+  height: 95px;
 }
 
-#img-subida {
+h2 {
+  text-align: center;
+  font-style: italic;
+}
+
+#original {
   margin-top: 0;
   height: 180px;
 }

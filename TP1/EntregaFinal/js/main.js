@@ -1,8 +1,9 @@
-var ctx = document.getElementById("canvas").getContext("2d");
-var ctx2 = document.getElementById("canvas").getContext("2d");
-var imageOrig = document.getElementById("img-subida");
-var width = 750;
-var height = 500;
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var ctx2 = canvas.getContext("2d");
+var imageOrig = document.getElementById("original");
+var width = 850;
+var height = 550;
 var r = 0;
 var g = 0;
 var b = 0;
@@ -86,8 +87,11 @@ function sepia(){
   for (var x = 0; x < width; x++){
   	for (var y = 0; y < height; y++){
   		getPixel(x, y);
-      var luminosidad = (0.3 * r + 0.3 * g + 0.1 * b);
-  		setPixel(x, y, Math.min(luminosidad + 40, 255), Math.min(luminosidad + 15, 255), luminosidad, 255);
+      var luminosidad = (0.5 * r + 0.5 * g + 0.1 * b);
+      r = Math.min(luminosidad + 40, 255);
+      g = Math.min(luminosidad + 20, 255);
+      b = Math.min(luminosidad, 255);
+  		setPixel(x, y, r, g, b, 255);
   	}
 	}
 	ctx2.putImageData(imageData2, 0, 0);
@@ -104,25 +108,49 @@ function negativo(){
 }
 
 function saturacion(){
-  var contrast = 100;
-  var factor = (259 * (contrast + 255)) / (255 * (259 - contrast));
+  var level = 2.9;
+  var RW = 0.3086;
+  var RG = 0.6084;
+  var RB = 0.0820;
+  var RW0 = (1 - level) * RW + level;
+  var RW1 = (1 - level) * RW;
+  var RW2 = (1 - level) * RW;
+  var RG0 = (1 - level) * RG;
+  var RG1 = (1 - level) * RG + level;
+  var RG2 = (1 - level) * RG;
+  var RB0 = (1 - level) * RB;
+  var RB1 = (1 - level) * RB;
+  var RB2 = (1 - level) * RB + level;
   for (var x = 0; x < width; x++){
     for (var y = 0; y < height; y++){
       getPixel(x, y);
-      r = factor * ( r - 128 ) + 128;
-      g = factor * ( g - 128 ) + 128;
-      b = factor * ( b - 128 ) + 128;
+      r = RW0*r + RG0*g + RB0*b;
+      g = RW1*r + RG1*g + RB1*b;
+      b = RW2*r + RG2*g + RB2*b;
       setPixel(x, y, r, g, b, 255);
     }
   }
   ctx2.putImageData(imageData2, 0, 0);
 }
 
-function guardarImagen() {
-  window.newW = open(imageData2.src);
-  newW.document.execCommand("saveAs");
-  newW.close();
+function original(){
+  ctx2.putImageData(imageData, 0, 0);
 }
+
+function guardarImagen() {
+  var link = window.document.createElement( 'a' );
+  var url = canvas.toDataURL();
+  var filename = 'image.png';
+  link.setAttribute( 'href', url );
+  link.setAttribute( 'download', filename );
+  link.style.visibility = 'hidden';
+  window.document.body.appendChild( link );
+  link.click();
+  window.document.body.removeChild( link );
+};
+
+var origBtm = document.getElementById('original');
+origBtm.addEventListener("click", original);
 
 var bynBtm = document.getElementById('byn');
 bynBtm.addEventListener("click", blancoYnegro);

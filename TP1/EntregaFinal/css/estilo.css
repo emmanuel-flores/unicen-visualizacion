@@ -1,0 +1,19 @@
+body {
+  background-color: grey;
+  margin-top: 20px;
+}
+
+input {
+  width: 90px;
+}
+
+img {
+  margin-top: 10px;
+  width: 100%;
+  height: 100px;
+}
+
+#img-subida {
+  margin-top: 0;
+  height: 180px;
+}

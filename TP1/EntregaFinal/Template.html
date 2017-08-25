@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Template</title>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/estilo.css">
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<img id="img-subida" src="" class="img-rounded">
+					<input type="file" id="file-input">
+					<div class="row">
+						<div class="col-md-6">
+							<img id="byn" src="imagenes/blancoynegro.png" class="image img-rounded">
+							<img id="binar" src="imagenes/binarizacion.png" class="image img-rounded">
+							<img id="satur" src="imagenes/saturacion.png" class="image img-rounded">
+						</div>
+						<div class="col-md-6">
+							<img id="sepia" src="imagenes/sepia.png" class="image img-rounded">
+							<img id="neg" src="imagenes/negativo.png" class="image img-rounded">
+							<img id="neg" src="" >
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-8">
+					<canvas id="canvas" width="750" height="500"></canvas>
+					<button type="button" id="save" class="btn-sm btn-block">Guardar imagen</button>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src=js/filtros.js ></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+	</body>
+</html>

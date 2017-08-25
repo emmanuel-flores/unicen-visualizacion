@@ -133,6 +133,36 @@ function saturacion(){
   ctx2.putImageData(imageData2, 0, 0);
 }
 
+function deteccionDbordes(){
+  var weights = [0, 1, 0,
+                1, -4, 1,
+                0, 1, 0];
+  var side = Math.round(Math.sqrt(weights.length));
+  var halfSide = Math.floor(side/2);
+  for (var x = 0; x < width; x++){
+    for (var y = 0; y < height; y++){
+      var sumReds = 0;
+      var sumGreens = 0;
+      var sumBlues = 0;
+      for (var kx = 0; kx < side; kx++) {
+        for (var ky = 0; ky < side; ky++) {
+          var currentKY = y + ky - halfSide;
+          var currentKX = x + kx - halfSide;
+          if (currentKY >= 0 && currentKY < height && currentKX >= 0 && currentKX < width) {
+            var offset = (currentKY * width + currentKX) * 4;
+            var weight = weights[ky * side + kx];
+            sumReds += imageData.data[offset] * weight;
+            sumGreens += imageData.data[offset + 1] * weight;
+            sumBlues += imageData.data[offset + 2] * weight;
+          }
+        }
+      }
+      setPixel(x, y, sumReds, sumGreens, sumBlues, 255);
+    }
+  }
+  ctx2.putImageData(imageData2, 0, 0);
+}
+
 function original(){
   ctx2.putImageData(imageData, 0, 0);
 }
@@ -147,7 +177,7 @@ function guardarImagen() {
   window.document.body.appendChild( link );
   link.click();
   window.document.body.removeChild( link );
-};
+}
 
 var origBtm = document.getElementById('original');
 origBtm.addEventListener("click", original);
@@ -166,6 +196,9 @@ negBtm.addEventListener("click", negativo);
 
 var saturBtm = document.getElementById('satur');
 saturBtm.addEventListener("click", saturacion);
+
+var ddbBtm = document.getElementById('ddb');
+ddbBtm.addEventListener("click", deteccionDbordes);
 
 var saveBtm = document.getElementById('save');
 saveBtm.addEventListener("click", guardarImagen);

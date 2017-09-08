@@ -1,0 +1,13 @@
+body {
+  background-color: grey;
+  margin-top: 20px;
+}
+
+canvas {
+  margin-bottom: 8px;
+}
+
+ span {
+  font-size: 21px;
+  font-style: italic;
+}

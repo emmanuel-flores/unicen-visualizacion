@@ -7,6 +7,8 @@ const tCenX = 325;
 const tDerX = 625;
 const tBaseY = 290;
 const tWidth = 250;
+const colorTorre = "#313131";
+const colorDisco = "#28A094";
 var torreIzq = [];
 var torreCen = [];
 var torreDer = [];
@@ -19,9 +21,9 @@ var discoSelect = {
 
 // --------------------------------------------------------------- //
 function dibujarTorre(x, y){
-  ctx.fillStyle = "#313131";
+  ctx.fillStyle = colorTorre;
   ctx.fillRect(x,y,tWidth,5);
-  ctx.fillStyle = "#313131";
+  ctx.fillStyle = colorTorre;
   ctx.fillRect((x + ((tWidth/2) - 4)),0,8,tBaseY);
 }
 
@@ -61,7 +63,7 @@ function dibujarDiscos(){
   for (var i = 0; i < dificultad.value; i++){
     torreIzq[i] = dNro;
     discos[i] = new Disco(dNro,dX,dY,dHeight,dWidth);
-    ctx.fillStyle = "#28a094";
+    ctx.fillStyle = colorDisco;
     ctx.fillRect(discos[i].posX,discos[i].posY,discos[i].Width,discos[i].Height);
     dWidth -= 26;
     dX += 13;
@@ -79,20 +81,17 @@ function MousePos(e){
 }
 
 function selectDisco(torre){
-  for (var i = 0; i < discos.length; i++){
-    if (discos[i].nro == torre[torre.length - 1]){
-      discoSelect.discNro = discos[i].nro;
-      discoSelect.origenX = discos[i].posX;
-      discoSelect.origenY = discos[i].posY;
-    }
-  }
+  var pos = torre[torre.length - 1] - 1;
+  discoSelect.discNro = discos[pos].nro;
+  discoSelect.origenX = discos[pos].posX;
+  discoSelect.origenY = discos[pos].posY;
 }
 
 function refresh(){
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   dibujarTorres();
   for (var i = 0; i < discos.length; i++){
-    ctx.fillStyle = "#28a094";
+    ctx.fillStyle = colorDisco;
     ctx.fillRect(discos[i].posX,discos[i].posY,discos[i].Width,discos[i].Height);
   }
 }

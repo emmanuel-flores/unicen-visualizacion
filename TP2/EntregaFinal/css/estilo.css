@@ -14,11 +14,16 @@ canvas {
   margin-top: 20px;
 }
 
- span {
-  font-size: 21px;
+ label {
+  font-size: 16px;
+  margin-top: 3px;
 }
 
 small {
   font-size: 11px;
   color: grey;
+}
+
+#start {
+  margin-top: 5px;
 }

@@ -13,11 +13,24 @@ var torreDer = [];
 var discos = [];
 var discoSelect = {
   discNro: null,
-  oX: 0,
-  oY: 0
+  origenX: 0,
+  origenY: 0
 };
 
 // --------------------------------------------------------------- //
+function dibujarTorre(x, y){
+  ctx.fillStyle = "#313131";
+  ctx.fillRect(x,y,tWidth,5);
+  ctx.fillStyle = "#313131";
+  ctx.fillRect((x + ((tWidth/2) - 4)),0,8,tBaseY);
+}
+
+function dibujarTorres(){
+  dibujarTorre(tIzqX,tBaseY);
+  dibujarTorre(tCenX,tBaseY);
+  dibujarTorre(tDerX,tBaseY);
+}
+
 function Disco(nro, paramPosX, paramPosY, paramHeight, paramWidth){
   this.nro = nro;
   this.posX = paramPosX;
@@ -26,16 +39,9 @@ function Disco(nro, paramPosX, paramPosY, paramHeight, paramWidth){
   this.Width = paramWidth;
 }
 
-function torre(x, y){
-  ctx.fillStyle = "#000000";
-  ctx.fillRect(x,y,tWidth,5);
-  ctx.fillStyle = "#000000";
-  ctx.fillRect((x + ((tWidth/2) - 2)),0,5,tBaseY);
-}
-
 function reset(){
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  torres();
+  dibujarTorres();
   torreIzq = [];
   torreCen = [];
   torreDer = [];
@@ -48,33 +54,19 @@ function dibujarDiscos(){
     reset();
   }
   var dX = tIzqX;
-  var dY = tBaseY - 21;
+  var dY = tBaseY - 26;
   var dWidth = tWidth;
-  var dNro = dificultad.value;
+  var dNro = 1;
+  var dHeight = 25;
   for (var i = 0; i < dificultad.value; i++){
     torreIzq[i] = dNro;
-    discos[i] = new Disco(dNro,dX,dY,20,dWidth);
-    ctx.fillStyle = "#FFF000";
+    discos[i] = new Disco(dNro,dX,dY,dHeight,dWidth);
+    ctx.fillStyle = "#28a094";
     ctx.fillRect(discos[i].posX,discos[i].posY,discos[i].Width,discos[i].Height);
-    dX += 12;
-    dY -= 21;
-    dWidth -= 24;
-    dNro -= 1;
-  }
-}
-
-function torres(){
-  torre(tIzqX,tBaseY);
-  torre(tCenX,tBaseY);
-  torre(tDerX,tBaseY);
-}
-
-function refresh(){
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  torres();
-  for (var i = 0; i < discos.length; i++){
-    ctx.fillStyle = "#FFF000";
-    ctx.fillRect(discos[i].posX,discos[i].posY,discos[i].Width,discos[i].Height);
+    dWidth -= 26;
+    dX += 13;
+    dY -= 26;
+    dNro += 1;
   }
 }
 
@@ -86,46 +78,136 @@ function MousePos(e){
   };
 }
 
+function selectDisco(torre){
+  for (var i = 0; i < discos.length; i++){
+    if (discos[i].nro == torre[torre.length - 1]){
+      discoSelect.discNro = discos[i].nro;
+      discoSelect.origenX = discos[i].posX;
+      discoSelect.origenY = discos[i].posY;
+    }
+  }
+}
+
+function refresh(){
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  dibujarTorres();
+  for (var i = 0; i < discos.length; i++){
+    ctx.fillStyle = "#28a094";
+    ctx.fillRect(discos[i].posX,discos[i].posY,discos[i].Width,discos[i].Height);
+  }
+}
+
+function volverPos(){
+  discos[discoSelect.discNro - 1].posX = discoSelect.origenX;
+  discos[discoSelect.discNro - 1].posY = discoSelect.origenY;
+  if ((discoSelect.origenX >= tIzqX) && (discoSelect.origenX <= (tIzqX + tWidth)) && (discoSelect.origenY <= tBaseY)){
+    torreIzq.push(discoSelect.discNro);
+  }else if ((discoSelect.origenX >= tCenX) && (discoSelect.origenX <= (tCenX + tWidth)) && (discoSelect.origenY <= tBaseY)){
+    torreCen.push(discoSelect.discNro);
+  }else if ((discoSelect.origenX >= tDerX) && (discoSelect.origenX <= (tDerX + tWidth)) && (discoSelect.origenY <= tBaseY)){
+    torreDer.push(discoSelect.discNro);
+  }
+}
+
+function colocarDisco(torre){
+  if (torre == 'izq'){
+    discos[discoSelect.discNro - 1].posX = tIzqX + (13 * (discoSelect.discNro - 1));
+    discos[discoSelect.discNro - 1].posY = (tBaseY - 26) - (26 * torreIzq.length);
+  }else if (torre == 'cen'){
+    discos[discoSelect.discNro - 1].posX = tCenX + (13 * (discoSelect.discNro - 1));
+    discos[discoSelect.discNro - 1].posY = (tBaseY - 26) - (26 * torreCen.length);
+  }else{
+    discos[discoSelect.discNro - 1].posX = tDerX + (13 * (discoSelect.discNro - 1));
+    discos[discoSelect.discNro - 1].posY = (tBaseY - 26) - (26 * torreDer.length);
+  }
+}
+
+function verificar(){
+  if ((torreIzq.length == 0) && (torreCen.length == 0) && (torreDer.length <= dificultad.value)){
+    alert('Felicitaciones ¡has ganado!')
+    reset();
+    startBtm.innerHTML = 'Volver a jugar';
+  }else if ((torreIzq.length == 0) && (torreCen.length <= dificultad.value) && (torreDer.length == 0)) {
+    alert('Felicitaciones ¡has ganado!')
+    reset();
+    startBtm.innerHTML = 'Volver a jugar';
+  }
+}
+
 function mouseDown(e){
-  var mousePos = MousePos(e);
-  if ((mousePos.x > tIzqX) && (mousePos.x < (tIzqX + tWidth)) && (mousePos.y < tBaseY)){
-    var pos = torreIzq.length - 1;
-    discoSelect.discNro = discos[pos].nro;
-    discoSelect.oX = discos[pos].posX;
-    discoSelect.oY = discos[pos].posY;
-    torreIzq.splice(pos,1);
-  }else if ((mousePos.x > tCenX) && (mousePos.x < (tCenX + tWidth)) && (mousePos.y < tBaseY)){
-    var pos = torreCen.length - 1;
-    discoSelect.discNro = discos[pos].nro;
-    discoSelect.oX = discos[pos].posX;
-    discoSelect.oY = discos[pos].posY;
-    torreCen.splice(pos,1);
-  }else if ((mousePos.x > tDerX) && (mousePos.x < (tDerX + tWidth)) && (mousePos.y < tBaseY)){
-    var pos = torreDer.length - 1;
-    discoSelect.discNro = discos[pos].nro;
-    discoSelect.oX = discos[pos].posX;
-    discoSelect.oY = discos[pos].posY;
-    torreDer.splice(pos,1);
+  if (discoSelect.discNro == null){
+    var mousePos = MousePos(e);
+    if ((mousePos.x > tIzqX) && (mousePos.x < (tIzqX + tWidth)) && (mousePos.y < tBaseY)){
+      var pos = torreIzq.length - 1;
+      selectDisco(torreIzq);
+      torreIzq.splice(pos,1);
+    }else if ((mousePos.x > tCenX) && (mousePos.x < (tCenX + tWidth)) && (mousePos.y < tBaseY)){
+      var pos = torreCen.length - 1;
+      selectDisco(torreCen);
+      torreCen.splice(pos,1);
+    }else if ((mousePos.x > tDerX) && (mousePos.x < (tDerX + tWidth)) && (mousePos.y < tBaseY)){
+      var pos = torreDer.length - 1;
+      selectDisco(torreDer);
+      torreDer.splice(pos,1);
+    }
   }
 }
 
 function mouseMove(e){
   if (discoSelect.discNro != null){
     var mousePos = MousePos(e);
-    var mX = discos[discos.length - discoSelect.discNro].Width / 2;
-    var mY = discos[discos.length - discoSelect.discNro].Height / 2;
-    discos[discos.length - discoSelect.discNro].posX = mousePos.x - mX;
-    discos[discos.length - discoSelect.discNro].posY = mousePos.y - mY;
+    var mX = discos[discoSelect.discNro - 1].Width / 2;
+    var mY = discos[discoSelect.discNro - 1].Height / 2;
+    discos[discoSelect.discNro - 1].posX = mousePos.x - mX;
+    discos[discoSelect.discNro - 1].posY = mousePos.y - mY;
     refresh();
   }
 }
 
 function mouseUp(e){
-  discoSelect.discNro = null;
+  if (discoSelect.discNro != null){
+    var mousePos = MousePos(e);
+    if ((mousePos.x > tIzqX) && (mousePos.x < (tIzqX + tWidth)) && (mousePos.y < tBaseY)){
+      if (torreIzq.length == 0){
+        colocarDisco('izq');
+        torreIzq.push(discoSelect.discNro);
+      }else if (torreIzq[torreIzq.length - 1] < discoSelect.discNro){
+        colocarDisco('izq');
+        torreIzq.push(discoSelect.discNro);
+      }else {
+        volverPos();
+      }
+    }else if ((mousePos.x > tCenX) && (mousePos.x < (tCenX + tWidth)) && (mousePos.y < tBaseY)){
+      if (torreCen.length == 0){
+        colocarDisco('cen');
+        torreCen.push(discoSelect.discNro);
+      }else if (torreCen[torreCen.length - 1] < discoSelect.discNro){
+        colocarDisco('cen');
+        torreCen.push(discoSelect.discNro);
+      }else {
+        volverPos();
+      }
+    }else if ((mousePos.x > tDerX) && (mousePos.x < (tDerX + tWidth)) && (mousePos.y < tBaseY)){
+      if (torreDer.length == 0){
+        colocarDisco('der');
+        torreDer.push(discoSelect.discNro);
+      }else if (torreDer[torreDer.length - 1] < discoSelect.discNro){
+        colocarDisco('der');
+        torreDer.push(discoSelect.discNro);
+      }else {
+        volverPos();
+      }
+    }else{
+      volverPos();
+    }
+    discoSelect.discNro = null;
+  }
+  refresh();
+  verificar();
 }
 
 // --------------------------------------------------------------- //
-window.onload = torres;
+window.onload = dibujarTorres;
 
 var startBtm = document.getElementById('start');
 startBtm.addEventListener("click", dibujarDiscos);

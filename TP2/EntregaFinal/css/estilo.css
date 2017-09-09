@@ -1,13 +1,24 @@
 body {
-  background-color: grey;
+  background-color: #eeeeee;
   margin-top: 20px;
 }
 
+h1 {
+  text-align: center;
+  font-size: 42px;
+  border-bottom: 1px solid;
+}
+
 canvas {
-  margin-bottom: 8px;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
  span {
   font-size: 21px;
-  font-style: italic;
+}
+
+small {
+  font-size: 11px;
+  color: grey;
 }

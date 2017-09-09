@@ -13,21 +13,30 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
+					<h1>Torres de Hanoi</h1>
 					<canvas id="canvas" width="900" height="300" class="img-rounded"></canvas>
-					<div class="row">
-						<div class="col-md-6 col-md-offset-3">
-							<span>Dificultad: </span>
-							<select id="dificultad">
-					 			<option value=3>Facil</option>
-							 	<option value=6 selected>Normal</option>
-							 	<option value=9>Dificil</option>
-							</select>
-							<button type="button" id="start" class="btn-block">Empezar</button>
+					<div class="col-md-6 col-md-offset-3">
+						<div class="row">
+						  <div class="col-md-3">
+								<span>Dificultad:</span>
+						  </div>
+						  <div class="col-md-9">
+								<select id="dificultad" class="form-control input-sm">
+									<option value=3>Facil (3 discos)</option>
+									<option value=6 selected>Normal (6 discos)</option>
+									<option value=9>Dificil (9 discos)</option>
+								</select>
+						  </div>
 						</div>
+						<button type="button" id="start" class="btn btn-block btn-default btn-sm">Jugar</button>
 					</div>
 				</div>
 			</div>
 		</div>
+		<footer class="container">
+			<hr>
+      <small>- 2017, Flores Emmanuel, TP N°2 -</small>
+    </footer>
 		<script type="text/javascript" src=js/torres_de_hanoi.js ></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>

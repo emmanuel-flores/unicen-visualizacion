@@ -8,7 +8,7 @@ const tDerX = 625;
 const tBaseY = 290;
 const tWidth = 250;
 const colorTorre = "#313131";
-const colorDisco = "#28A094";
+var colorDisco = ["#1A4F63", "#068587", "#6FB07F", "#FCB03C", "#FC5B3F", "#1A4F63", "#068587", "#6FB07F", "#FCB03C"];
 var torreIzq = [];
 var torreCen = [];
 var torreDer = [];
@@ -63,7 +63,7 @@ function dibujarDiscos(){
   for (var i = 0; i < dificultad.value; i++){
     torreIzq[i] = dNro;
     discos[i] = new Disco(dNro,dX,dY,dHeight,dWidth);
-    ctx.fillStyle = colorDisco;
+    ctx.fillStyle = colorDisco[i];
     ctx.fillRect(discos[i].posX,discos[i].posY,discos[i].Width,discos[i].Height);
     dWidth -= 26;
     dX += 13;
@@ -91,7 +91,7 @@ function refresh(){
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   dibujarTorres();
   for (var i = 0; i < discos.length; i++){
-    ctx.fillStyle = colorDisco;
+    ctx.fillStyle = colorDisco[i];
     ctx.fillRect(discos[i].posX,discos[i].posY,discos[i].Width,discos[i].Height);
   }
 }

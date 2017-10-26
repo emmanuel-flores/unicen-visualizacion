@@ -1,0 +1,95 @@
+body {
+  background: #FFFF;
+}
+
+.game{
+  width: 900px;
+  height: 500px;
+}
+
+.background{
+  width: inherit;
+  height: inherit;
+  position: absolute;
+}
+
+.background_0{
+  width: inherit;
+  height: inherit;
+  background: url('../imagenes/fondo/BG_0.png');
+  background-size: 100% auto;
+  position: absolute;
+  z-index: 1;
+}
+
+.background_1{
+  width: inherit;
+  height: inherit;
+  background: url('../imagenes/fondo/BG_1.png') bottom;
+  background-size: contain;
+  position: absolute;
+  background-repeat: repeat-x;
+  z-index: 2;
+}
+
+.background_2{
+  width: inherit;
+  height: inherit;
+  background: url('../imagenes/fondo/BG_2.png') bottom;
+  background-size: contain;
+  position: absolute;
+  background-repeat: repeat-x;
+  z-index: 3;
+}
+
+.background_3{
+  width: inherit;
+  height: inherit;
+  background: url('../imagenes/fondo/BG_3.png') bottom;
+  background-size: contain;
+  position: absolute;
+  background-repeat: repeat-x;
+  z-index: 4;
+}
+
+.animacion_bg1{
+  animation: animacionBG1 32s infinite;
+  animation-timing-function: linear;
+}
+
+.animacion_bg2{
+  animation: animacionBG2 8s infinite;
+  animation-timing-function: linear;
+}
+
+.animacion_bg3{
+  animation: animacionBG3 2s infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes animacionBG3 {
+  100%{background-position: -900px bottom;}
+}
+
+@keyframes animacionBG2 {
+  100%{background-position: -900px bottom;}
+}
+
+@keyframes animacionBG1 {
+  100%{background-position: -900px bottom;}
+}
+
+.personaje{
+  width: 85px;
+  height: 140px;
+  top: 316px;
+  left: 19px;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: 5;
+}
+
+.quieto{
+  background: url('../imagenes/personaje/quieto.png');
+  animation: quieto 1s steps(20) infinite;
+}

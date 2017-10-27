@@ -67,22 +67,23 @@ body {
   animation-timing-function: linear;
 }
 
+@keyframes animacionBG2 {
+  100%{background-position: -900px bottom;}
+}
+
 @keyframes animacionBG3 {
   100%{background-position: -900px bottom;}
 }
 
-@keyframes animacionBG2 {
-  100%{background-position: -900px bottom;}
-}
 
 @keyframes animacionBG1 {
   100%{background-position: -900px bottom;}
 }
 
 .personaje{
-  width: 85px;
-  height: 140px;
-  top: 316px;
+  width: 87px;
+  height: 80px;
+  top: 374px;
   left: 19px;
   background-repeat: no-repeat;
   position: absolute;
@@ -90,6 +91,60 @@ body {
 }
 
 .quieto{
-  background: url('../imagenes/personaje/quieto.png');
-  animation: quieto 1s steps(20) infinite;
+  background: url('../imagenes/personaje/deep.png')0px 0px;
+  animation: quieto .6s steps(3) infinite;
+  /*background-position: 0px 0px;*/
+}
+
+.correr{
+  width: 80px;
+  height: 67px;
+  top: 390px;
+  background: url('../imagenes/personaje/deep.png')0px -174px;
+  animation: correr .5s steps(4) infinite;
+  /*background-position: 0px -174px;*/
+}
+
+.saltar{
+  width: 84px;
+  background: url('../imagenes/personaje/deep.png')-160px -483px;
+  animation: saltar .6s forwards;
+  animation-timing-function: linear;
+}
+
+.ataque{
+  width: 78px;
+  height: 64px;
+  top: 388px;
+  background: url('../imagenes/personaje/deep_ataque.png')0px -174px;
+  animation: ataque .3s steps(5) forwards;
+}
+
+.rodar{
+  height: 48px;
+  top: 412px;
+  background: url('../imagenes/personaje/deep1.png')-560px -435px;
+  animation: rodar .4s steps(3) forwards;
+}
+
+@keyframes quieto {
+  100%{background-position: -240px 0px;}
+}
+
+@keyframes correr {
+  100%{background-position: -320px -174px;}
+}
+
+@keyframes saltar {
+  0%{background-position: -160px -483px; top: 380px}
+  50%{top: 200px}
+  100%{top: 380px}
+}
+
+@keyframes ataque {
+  100%{background-position: -400px -174px;}
+}
+
+@keyframes rodar {
+  100%{background-position: -800px -435px;}
 }

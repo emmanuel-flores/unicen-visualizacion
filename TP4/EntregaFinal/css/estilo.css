@@ -3,12 +3,18 @@ body {
 }
 
 .game{
+  overflow: hidden;
   width: 975px;
-  height: 500px;
+  height: 400px;
   margin-top: 10px;
 }
 
+.controles{
+  height: 200px;
+}
+
 .background{
+  overflow: hidden;
   width: inherit;
   height: inherit;
   position: absolute;
@@ -17,7 +23,7 @@ body {
 .background_0{
   width: inherit;
   height: inherit;
-  background: url('../imagenes/fondo/BG_0.png');
+  background: url('../imagenes/BG_0.png');
   background-size: 100% auto;
   position: absolute;
   z-index: 1;
@@ -26,7 +32,7 @@ body {
 .background_1{
   width: inherit;
   height: inherit;
-  background: url('../imagenes/fondo/BG_1.png') bottom;
+  background: url('../imagenes/BG_1.png') bottom;
   background-size: contain;
   position: absolute;
   background-repeat: repeat-x;
@@ -36,7 +42,7 @@ body {
 .background_2{
   width: inherit;
   height: inherit;
-  background: url('../imagenes/fondo/BG_2.png') bottom;
+  background: url('../imagenes/BG_2.png') bottom;
   background-size: contain;
   position: absolute;
   background-repeat: repeat-x;
@@ -46,7 +52,7 @@ body {
 .background_3{
   width: inherit;
   height: inherit;
-  background: url('../imagenes/fondo/BG_3.png') bottom;
+  background: url('../imagenes/BG_3.png') bottom;
   background-size: contain;
   position: absolute;
   background-repeat: repeat-x;
@@ -69,22 +75,22 @@ body {
 }
 
 @keyframes animacionBG2 {
-  100%{background-position: -975px bottom;}
+  100%{background-position: -1012px bottom;}
 }
 
 @keyframes animacionBG3 {
-  100%{background-position: -975px bottom;}
+  100%{background-position: -1012px bottom;}
 }
 
 
 @keyframes animacionBG1 {
-  100%{background-position: -975px bottom;}
+  100%{background-position: -1012px bottom;}
 }
 
 .personaje{
   width: 87px;
   height: 80px;
-  top: 374px;
+  top: 264px;
   left: 40px;
   background-repeat: no-repeat;
   position: absolute;
@@ -92,38 +98,61 @@ body {
 }
 
 .quieto{
-  background: url('../imagenes/personaje/deep.png')0px 0px;
+  background: url('../imagenes/deep.png')0px 0px;
   animation: quieto .6s steps(3) infinite;
 }
 
 .correr{
   width: 80px;
   height: 67px;
-  top: 390px;
-  background: url('../imagenes/personaje/deep.png')0px -174px;
+  top: 280px;
+  background: url('../imagenes/deep.png')0px -174px;
   animation: correr .5s steps(4) infinite;
 }
 
 .saltar{
   width: 84px;
-  background: url('../imagenes/personaje/deep.png')-160px -483px;
-  animation: saltar .6s forwards;
+  background: url('../imagenes/deep.png')-160px -483px;
+  animation: saltar .7s forwards;
   animation-timing-function: linear;
 }
 
 .ataque{
   width: 78px;
   height: 64px;
-  top: 388px;
-  background: url('../imagenes/personaje/deep_ataque.png')0px -174px;
+  top: 280px;
+  background: url('../imagenes/deep_ataque.png')0px -174px;
   animation: ataque .3s steps(5) forwards;
 }
 
 .rodar{
   height: 48px;
-  top: 412px;
-  background: url('../imagenes/personaje/deep1.png')-560px -435px;
+  top: 300px;
+  background: url('../imagenes/deep.png')-560px -435px;
   animation: rodar .4s steps(3) forwards;
+}
+
+.obstaculo{
+  right: -100px;
+  width: 87px;
+  height: 80px;
+  top: 255px;
+  position: absolute;
+  background-repeat: no-repeat;
+  z-index: 6;
+  animation: mover 2s;
+  animation-timing-function: linear;
+}
+
+.enemigo{
+  height: 80px;
+  position: relative;
+  background: url('../imagenes/bandit.png') right 720px;
+  animation: enemigo 0.4s steps(4) infinite;
+}
+
+.enemigo_muerte{
+  
 }
 
 @keyframes quieto {
@@ -135,9 +164,9 @@ body {
 }
 
 @keyframes saltar {
-  0%{background-position: -160px -483px; top: 380px}
-  50%{top: 200px}
-  100%{top: 380px}
+  0%{background-position: -160px -483px; top: 280px}
+  50%{top: 140px}
+  100%{top: 280px}
 }
 
 @keyframes ataque {
@@ -146,4 +175,12 @@ body {
 
 @keyframes rodar {
   100%{background-position: -800px -435px;}
+}
+
+@keyframes enemigo {
+  0%{background-position: -720px -160px}
+  100%{background-position: -400px -160px;}
+}
+@keyframes mover {
+  100%{right: 1000px;}
 }

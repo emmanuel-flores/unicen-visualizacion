@@ -6,18 +6,22 @@ const flechaDer = 39;
 const flechaUp = 38;
 const flechaIzq = 37;
 const flechaDown = 40;
-// var enemigo = '<div class="obstaculo"><div class="enemigo"></div></div>';
 var music = new Audio('sounds/sound.mp3');
 music.volume = 0.1;
 music.loop = true;
 
 function correr(e){
   if (e.keyCode === flechaDer) {
+    var agregarEnemigo = setInterval(function() {
+      var enemigo = '<div class="obstaculo"><div class="enemigo"></div></div>';
+      $("#bg").append(enemigo);
+    }, 3000)
     background_1.classList.add('animacion_bg1');
     background_2.classList.add('animacion_bg2');
     background_3.classList.add('animacion_bg3');
     personaje.classList.remove('quieto');
     personaje.classList.add('correr');
+    music.play();
   }else if (e.keyCode === flechaUp && personaje.classList.contains('correr')) {
     personaje.classList.remove('correr');
     personaje.classList.add('saltar');
@@ -44,17 +48,12 @@ function correr(e){
 
 document.addEventListener("keydown", correr);
 
-// var agregarEnemigo = setInterval(function() {
-//   var enemigo = '<div class="obstaculo"><div class="enemigo"></div></div>';
-//   $("#bg").append(enemigo);
-// }, 3000)
-
 var gameOver = setInterval(function() {
   var obstaculos = $(".obstaculo");
   for (var i = 0; i < obstaculos.length; i++) {
     var leftdelenemigo = $(obstaculos[i]).offset().left;
     var colision = $(".personaje").offset().left + $(".personaje").width();
-    if (leftdelenemigo < colision && (personaje.classList.contains('correr') || personaje.classList.contains('quieto'))) {
+    if (leftdelenemigo < colision && personaje.classList.contains('correr')) {
       personaje.classList.remove('correr');
       personaje.classList.add('rodar');
       personaje.addEventListener("animationend", function() {
@@ -64,15 +63,3 @@ var gameOver = setInterval(function() {
     }
   }
 }, 100);
-
-function start(){
-  var agregarEnemigo = setInterval(function() {
-    var enemigo = '<div class="obstaculo"><div class="enemigo"></div></div>';
-    $("#bg").append(enemigo);
-  }, 3000)
-  personaje.classList.add('quieto');
-  music.play();
-}
-
-var startBtm = document.getElementById('start');
-startBtm.addEventListener("click", start);

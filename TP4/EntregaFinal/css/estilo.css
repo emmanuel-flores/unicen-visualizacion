@@ -151,10 +151,6 @@ body {
   animation: enemigo 0.4s steps(4) infinite;
 }
 
-.enemigo_muerte{
-  
-}
-
 @keyframes quieto {
   100%{background-position: -240px 0px;}
 }

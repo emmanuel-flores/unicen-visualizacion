@@ -1,24 +1,83 @@
 body {
-  background: #FFFF;
+  background: #91a7a0;
+}
+
+.titulo{
 }
 
 .game{
-  overflow: hidden;
-  width: 975px;
-  height: 400px;
+  width: 100%;
+  height: 296%;
   margin-top: 10px;
+  image-rendering: optimizespeed;
+}
+
+.vidas{
+  height: 35px;
+  top: 138px;
+  left: 25px;
+  position: absolute;
+  z-index: 8;
 }
 
 .controles{
-  height: 200px;
+  height: 50px;
+  top: 138px;
+  right: -5px;
+  position: absolute;
+  z-index: 8;
 }
 
-.background{
+.score{
+  text-align: center;
+  width: 100%;
+  font-size: 24px;
+  font-style: oblique;
+  position: absolute;
+  z-index: 6;
+}
+
+.stop{
+  animation-play-state: paused;
+}
+
+.cosas{
   overflow: hidden;
   width: inherit;
   height: inherit;
   position: absolute;
 }
+
+.start{
+  position: relative;
+  margin-top: 20%;
+  width: 120px;
+  z-index: 8;
+}
+
+.game_over{
+  display: none;
+  z-index: 8;
+  width: 200px;
+  height: 200px;
+  position: relative;
+  text-align: center;
+  margin-top: 13%;
+}
+
+h2{
+  font-size: 24px;
+  font-style: oblique;
+  color: red;
+}
+
+#score{
+  color: white;
+  font-size: 18px;
+  font-style: oblique;
+}
+
+/*FONDO*/
 
 .background_0{
   width: inherit;
@@ -87,10 +146,13 @@ body {
   100%{background-position: -1012px bottom;}
 }
 
+
+/*PERSONAJES*/
+
 .personaje{
   width: 87px;
   height: 80px;
-  top: 264px;
+  top: 388px;
   left: 40px;
   background-repeat: no-repeat;
   position: absolute;
@@ -105,7 +167,7 @@ body {
 .correr{
   width: 80px;
   height: 67px;
-  top: 280px;
+  top: 402px;
   background: url('../imagenes/deep.png')0px -174px;
   animation: correr .5s steps(4) infinite;
 }
@@ -120,23 +182,36 @@ body {
 .ataque{
   width: 78px;
   height: 64px;
-  top: 280px;
+  top: 402px;
   background: url('../imagenes/deep_ataque.png')0px -174px;
   animation: ataque .3s steps(5) forwards;
 }
 
 .rodar{
   height: 48px;
-  top: 300px;
+  top: 424px;
   background: url('../imagenes/deep.png')-560px -435px;
   animation: rodar .4s steps(3) forwards;
+}
+
+.vidamenos{
+  width: 78px;
+  background: url('../imagenes/deep.png')0px -320px;
+  animation: vidamenos .4s steps(4) forwards;
+}
+
+.muerto{
+  width: 78px;
+  height: 76px;
+  background: url('../imagenes/deep.png')0px -320px;
+  animation: muerto .4s steps(4) forwards;
 }
 
 .obstaculo{
   right: -100px;
   width: 87px;
   height: 80px;
-  top: 255px;
+  top: 256px;
   position: absolute;
   background-repeat: no-repeat;
   z-index: 6;
@@ -147,8 +222,25 @@ body {
 .enemigo{
   height: 80px;
   position: relative;
-  background: url('../imagenes/bandit.png') right 720px;
+  background: url('../imagenes/jack.png') right 720px;
   animation: enemigo 0.4s steps(4) infinite;
+}
+
+.enemigomuerto{
+  height: 80px;
+  position: relative;
+  background: url('../imagenes/bat.png') right 320px;
+  animation: enemigomuerto 0.3s steps(4) forwards;
+}
+
+.puntos{
+  color: white;
+  top: 235px;
+  left: 50px;
+  position: relative;
+  z-index: 6;
+  animation: puntos 1s;
+  animation-timing-function: linear;
 }
 
 @keyframes quieto {
@@ -160,9 +252,9 @@ body {
 }
 
 @keyframes saltar {
-  0%{background-position: -160px -483px; top: 280px}
-  50%{top: 140px}
-  100%{top: 280px}
+  0%{background-position: -160px -483px; top: 402px}
+  50%{top: 262px}
+  100%{top: 402px}
 }
 
 @keyframes ataque {
@@ -173,10 +265,28 @@ body {
   100%{background-position: -800px -435px;}
 }
 
+@keyframes vidamenos {
+  100%{background-position: -320px -320px;}
+}
+
+@keyframes muerto {
+  100%{background-position: -320px -320px; top: 390px;}
+}
+
+@keyframes mover {
+  100%{right: 1000px;}
+}
+
 @keyframes enemigo {
   0%{background-position: -720px -160px}
   100%{background-position: -400px -160px;}
 }
-@keyframes mover {
-  100%{right: 1000px;}
+
+@keyframes enemigomuerto {
+  0%{background-position: -320px -87px}
+  100%{background-position: 0px -87px;}
+}
+
+@keyframes puntos {
+  100%{top: 215px;}
 }

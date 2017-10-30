@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title></title>
+    <title>Running</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/estilo.css">
   </head>
@@ -13,21 +13,32 @@
     <div class="container">
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
-          <div class="game">
-            <div id="bg" class="background">
-              <div class="background_0"></div>
-              <div id="bg1" class="background_1"></div>
-              <div id="bg2" class="background_2"></div>
-              <div id="bg3" class="background_3"></div>
-            </div>
+          <h1><img class="titulo center-block" src="imagenes/running.png" alt=""></h1>
+          <div id="game" class="game">
+            <div class="background_0"></div>
+            <div id="bg1" class="background_1"></div>
+            <div id="bg2" class="background_2"></div>
+            <div id="bg3" class="background_3"></div>
             <div id="pj" class="personaje quieto"></div>
+            <div class="cosas">
+              <button type="button" name="button" id="start" class="start btn btn-info btn-lg center-block">Start</button>
+              <div class="game_over center-block" id="gameover">
+                <h2>Game Over</h2>
+                <p id="score"></p>
+                <button type="button" name="button" id="restart" class="start btn btn-info btn-lg center-block">Restart</button>
+              </div>
+            </div>
           </div>
+          <div class="score">
+            <p id="pts">0</p>
+          </div>
+          <img id="vidas" class="vidas" src="imagenes/vidas_3.png" alt="">
           <img class="controles" src="imagenes/FlechasDireccion.png" alt="">
         </div>
 			</div>
 		</div>
   </body>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="js/jquery-3.1.0.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/juego.js" charset="utf-8"></script>
 </html>

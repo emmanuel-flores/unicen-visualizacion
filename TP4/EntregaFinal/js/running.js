@@ -1,10 +1,12 @@
+"use strict";
+// --------------------------------------------------------------- //
 var personaje = document.getElementById('pj');
 var background_1 = document.getElementById('bg1');
 var background_2 = document.getElementById('bg2');
 var background_3 = document.getElementById('bg3');
 var divGameOver = document.getElementById('gameover');
 var imgVidas = document.getElementById('vidas');
-var game = document.getElementById('game').querySelectorAll("div");
+var game = document.getElementById('game').querySelectorAll(".a");
 const flechaUp = 38;
 const flechaIzq = 37;
 const addenemigo = '<div id="obstaculo" class="obstaculo"><div id="enemigo" class="enemigo"></div></div>';
@@ -16,30 +18,29 @@ var music = new Audio('sounds/sound.mp3');
 music.volume = 0.1;
 music.loop = true;
 
+// --------------------------------------------------------------- //
 function cambiarAnimacion(element, actual, nueva) {
   element.classList.remove(actual);
   element.classList.add(nueva);
 }
 
 var setGame = setInterval(function() {
-  if (running == true) {
+  if (running) {
     var obstaculos = $(".obstaculo");
     var enemigo = document.getElementById('enemigo');
     for (var i = 0; i < obstaculos.length; i++) {
       var posdelenemigo = $(obstaculos[i]).offset().left;
       var colision = $(".personaje").offset().left + $(".personaje").width();
-      if (posdelenemigo < colision && personaje.classList.contains('correr') && !(enemigo.classList.contains('enemigomuerto'))) {
-        if (cantVidas == 0){
+      if (posdelenemigo < colision && personaje.classList.contains('correr') && enemigo.classList.contains('enemigo')) {
+        if (cantVidas === 0){
+          running = false;
           cambiarAnimacion(personaje,'correr','muerto');
-          personaje.addEventListener("animationend", function() {
-            for (var i = 0; i < game.length; i++) {
-              game[i].style.animationPlayState = 'paused';
-            }
-            running = false;
-            music.pause();
-            divGameOver.style.display = 'block';
-            document.getElementById('score').innerHTML = 'Score: '+puntuacion;
-          });
+          for (var i = 0; i < game.length; i++) {
+            game[i].style.animationPlayState = 'paused';
+          }
+          music.pause();
+          divGameOver.classList.remove('none');
+          document.getElementById('score').innerHTML = 'Score: '+puntuacion;
         }else{
           cantVidas --;
           imgVidas.src = "imagenes/vidas_"+cantVidas+".png";
@@ -51,7 +52,7 @@ var setGame = setInterval(function() {
             });
           });
         }
-      }else if (posdelenemigo < colision && personaje.classList.contains('ataque') && !(enemigo.classList.contains('enemigomuerto'))) {
+      }else if (posdelenemigo < colision && personaje.classList.contains('ataque') && enemigo.classList.contains('enemigo')) {
         cambiarAnimacion(enemigo,'enemigo','enemigomuerto');
         $(".cosas").append(addscore);
         document.getElementById('puntos').addEventListener("animationend", function() {
@@ -64,14 +65,14 @@ var setGame = setInterval(function() {
 }, 100);
 
 var setScore = setInterval(function() {
-  if (running == true){
+  if (running){
     puntuacion ++;
     document.getElementById('pts').innerHTML = puntuacion;
   }
 }, 50);
 
 var agregarEnemigo = setInterval(function() {
-  if (running == true){
+  if (running){
     $(".cosas").append(addenemigo);
     document.getElementById('obstaculo').addEventListener("animationend", function() {
       $("div").remove(".enemigo, .obstaculo");
@@ -103,23 +104,24 @@ function empezar(){
   music.play();
 }
 
-// function reiniciar(){
-//   puntuacion = 0;
-//   cantVidas = 3;
-//   for (var i = 0; i < game.length; i++) {
-//     game[i].style.animationPlayState = 'running';
-//   }
-//   cambiarAnimacion(personaje,'muerto','correr');
-//   running = true;
-//   imgVidas.src = "imagenes/vidas_"+cantVidas+".png";
-//   divGameOver.style.display = 'none';
-//   music.play();
-// }
+function reiniciar(){
+  cantVidas = 3;
+  puntuacion = 0;
+  for (var i = 0; i < game.length; i++) {
+    game[i].style.animationPlayState = 'running';
+  }
+  cambiarAnimacion(personaje,'muerto','correr');
+  running = true;
+  imgVidas.src = "imagenes/vidas_"+cantVidas+".png";
+  divGameOver.classList.add('none');
+  music.play();
+}
 
+// --------------------------------------------------------------- //
 document.addEventListener("keydown", movimientos);
 
 var btmStart = document.getElementById('start');
 btmStart.addEventListener("click", empezar);
 
-// var btmRestart = document.getElementById('restart');
-// btmRestart.addEventListener("click", reiniciar);
+var btmRestart = document.getElementById('restart');
+btmRestart.addEventListener("click", reiniciar);

@@ -2,9 +2,6 @@ body {
   background: #91a7a0;
 }
 
-.titulo{
-}
-
 .game{
   width: 100%;
   height: 296%;
@@ -37,10 +34,6 @@ body {
   z-index: 6;
 }
 
-.stop{
-  animation-play-state: paused;
-}
-
 .cosas{
   overflow: hidden;
   width: inherit;
@@ -56,13 +49,16 @@ body {
 }
 
 .game_over{
-  display: none;
   z-index: 8;
   width: 200px;
   height: 200px;
   position: relative;
   text-align: center;
   margin-top: 13%;
+}
+
+.none{
+  display: none;
 }
 
 h2{

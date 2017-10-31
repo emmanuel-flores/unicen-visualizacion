@@ -12,17 +12,17 @@
   <body>
     <div class="container">
       <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-          <h1><img class="titulo center-block" src="imagenes/running.png" alt=""></h1>
+        <div class="col-md-10 col-md-offset-1 .col-sm-12">
+          <h1><img class="center-block" src="imagenes/running.png" alt=""></h1>
           <div id="game" class="game">
             <div class="background_0"></div>
-            <div id="bg1" class="background_1"></div>
-            <div id="bg2" class="background_2"></div>
-            <div id="bg3" class="background_3"></div>
+            <div id="bg1" class="background_1 a"></div>
+            <div id="bg2" class="background_2 a"></div>
+            <div id="bg3" class="background_3 a"></div>
             <div id="pj" class="personaje quieto"></div>
             <div class="cosas">
               <button type="button" name="button" id="start" class="start btn btn-info btn-lg center-block">Start</button>
-              <div class="game_over center-block" id="gameover">
+              <div class="game_over none center-block" id="gameover">
                 <h2>Game Over</h2>
                 <p id="score"></p>
                 <button type="button" name="button" id="restart" class="start btn btn-info btn-lg center-block">Restart</button>
@@ -40,5 +40,5 @@
   </body>
   <script src="js/jquery-3.1.0.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
-  <script src="js/juego.js" charset="utf-8"></script>
+  <script src="js/running.js" charset="utf-8"></script>
 </html>

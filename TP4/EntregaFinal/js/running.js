@@ -81,12 +81,12 @@ var agregarEnemigo = setInterval(function() {
 }, 2500);
 
 function movimientos(e){
-  if (e.keyCode === flechaUp && personaje.classList.contains('correr')){
+  if (e.keyCode === flechaUp && personaje.classList.contains('correr') && running == true){
     cambiarAnimacion(personaje,'correr','saltar');
     personaje.addEventListener("animationend", function() {
       cambiarAnimacion(personaje,'saltar','correr');
     });
-  }else if (e.keyCode === flechaIzq && personaje.classList.contains('correr')){
+  }else if (e.keyCode === flechaIzq && personaje.classList.contains('correr') && running == true){
     cambiarAnimacion(personaje,'correr','ataque');
     personaje.addEventListener("animationend", function() {
       cambiarAnimacion(personaje,'ataque','correr');

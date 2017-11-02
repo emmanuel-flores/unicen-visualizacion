@@ -1,5 +1,10 @@
 body {
-  background: #91a7a0;
+  background: url('../imagenes/BG.png');
+  background-size: 100% auto;
+}
+
+.pad{
+  padding: 0px;
 }
 
 .game{
@@ -11,16 +16,16 @@ body {
 
 .vidas{
   height: 35px;
-  top: 138px;
-  left: 25px;
+  top: 140px;
+  left: 20px;
   position: absolute;
   z-index: 8;
 }
 
 .controles{
   height: 50px;
-  top: 138px;
-  right: -5px;
+  top: 136px;
+  right: 12px;
   position: absolute;
   z-index: 8;
 }
@@ -149,7 +154,7 @@ h2{
   width: 87px;
   height: 80px;
   top: 388px;
-  left: 40px;
+  left: 30px;
   background-repeat: no-repeat;
   position: absolute;
   z-index: 5;

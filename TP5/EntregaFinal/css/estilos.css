@@ -1,0 +1,198 @@
+/*Generales*/
+
+body{
+  background-color: #e6ecf0;
+}
+
+.navbar {
+  background-color: #FFF;
+  margin-bottom: 0px;
+  border: 0px;
+}
+
+.logo{
+  height: 40px;
+  margin-top: 10%;
+}
+
+.navbar-brand{
+  padding: 0px;
+}
+
+.hceleste:hover{
+  color: #3A9CF2;
+}
+
+.centrar{
+  display: block !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.buscar{
+  border-radius: 20px;
+}
+
+.panel-body{
+  background-color: #3A9CF2;
+  padding: 10px;
+}
+
+.panel{
+  border: 0px;
+}
+
+h1{
+  color: #FFF;
+  text-align: center;
+  font-size: 27px;
+  font-weight: bold;
+  line-height: 32px;
+  margin: 0px;
+}
+
+.barra{
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  z-index: 25;
+}
+
+#vista{
+    background-color: #3A9CF2;
+    color: #FFF;
+    border-color: #FFF;
+    float: right;
+}
+
+.contenedor{
+  margin-top: 112px;
+}
+
+.nocturno{
+  margin-top: 65%;
+  display: block;
+}
+
+.desactivar{
+  display: none;
+}
+
+.presentacion{
+  display: block;
+}
+
+.pajaro{
+  width: 8%;
+  position: absolute;
+  top: 40%;
+}
+
+.formulario{
+  width: 55%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 38%;
+}
+
+#buscarp{
+  height: 50px;
+}
+
+#nocturnop{
+  margin: 0px;
+  position: absolute;
+  top: 46%;
+  right: 28%;
+  font-size: 28px;
+}
+
+
+.dentro{
+  display: none;
+}
+
+
+/*Grilla*/
+
+.imageng{
+  max-width: 100%;
+  height: 285px;
+}
+
+.dimageng{
+  margin-bottom: 4px;
+  width: 33%;
+  display: inline-block;
+  position: relative;
+}
+
+.dimageng h3{
+  position: absolute;
+  width: 100%;
+  top: 0px;
+  text-align: center;
+  z-index: -1;
+}
+
+.desvanecer:hover {
+  opacity: 0.3;
+  -webkit-transition: opacity 500ms;
+  -moz-transition: opacity 500ms;
+  -o-transition: opacity 500ms;
+  -ms-transition: opacity 500ms;
+  transition: opacity 500ms;
+}
+
+.escaladag{
+  transform: scale(2,2);
+  transform: scale(3,3);
+}
+
+/*Vista 2*/
+
+.fila{
+  position: inherit;
+  padding-left: 2px;
+  padding-right: 2px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.imagen-f{
+  margin-bottom: 0px;
+  max-width: 100%;
+  height: 100px;
+}
+
+.img-grande{
+  margin-bottom: 0px;
+  max-width: 100%;
+}
+
+.imgGrande{
+  margin-top: 26px;
+}
+
+.flecha{
+  color: #777;
+  text-align: center;
+  display: block;
+  font-size: 34px;
+  position: inherit;
+  line-height: 3;
+}
+
+.flecha:hover{
+  color: #3A9CF2;
+}
+
+.like-f{
+  font-size: 26px;
+  text-align: center;
+  top: -37px;
+  position: relative;
+  background-color: white;
+  margin: 0px;
+  opacity: 0.6;
+}

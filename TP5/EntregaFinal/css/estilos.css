@@ -77,9 +77,10 @@ h1{
 
 .presentacion{
   display: block;
-  height: 110%;
+  height: 111%;
   background-image: url(../images/clara.jpg);
   background-repeat: no-repeat;
+  background-size: cover;
 }
 
 

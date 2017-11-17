@@ -1,7 +1,7 @@
 /*Generales*/
-
 body{
   background-color: #e6ecf0;
+  height: 90%;
 }
 
 .navbar {
@@ -58,19 +58,16 @@ h1{
   z-index: 25;
 }
 
-#vista{
-    background-color: #3A9CF2;
-    color: #FFF;
-    border-color: #FFF;
-    float: right;
+.dropdown-menu{
+  text-align: center;
 }
 
 .contenedor{
   margin-top: 112px;
+  height: 100%;
 }
 
 .nocturno{
-  margin-top: 65%;
   display: block;
 }
 
@@ -80,38 +77,49 @@ h1{
 
 .presentacion{
   display: block;
+  height: 110%;
+  background-image: url(../images/clara.jpg);
+  background-repeat: no-repeat;
 }
+
 
 .pajaro{
   width: 8%;
-  position: absolute;
-  top: 40%;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .formulario{
-  width: 55%;
+  width: 30%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 38%;
 }
 
 #buscarp{
-  height: 50px;
+  margin-top: 10px;
+  height: 40px;
 }
 
 #nocturnop{
   margin: 0px;
+  margin-top: 10px;
   position: absolute;
-  top: 46%;
   right: 28%;
   font-size: 28px;
 }
 
+#dropdownMenu1:hover{
+  color: #3A9CF2 !important;
+}
+
+#dropdownMenu1{
+  padding-top: 65%;
+}
 
 .dentro{
   display: none;
+  height: 100%;
 }
-
 
 /*Grilla*/
 
@@ -122,9 +130,11 @@ h1{
 
 .dimageng{
   margin-bottom: 4px;
+  margin-right: 3px;
   width: 33%;
   display: inline-block;
   position: relative;
+  text-align:center;
 }
 
 .dimageng h3{
@@ -133,6 +143,7 @@ h1{
   top: 0px;
   text-align: center;
   z-index: -1;
+  padding-top: 30%;
 }
 
 .desvanecer:hover {
@@ -151,27 +162,45 @@ h1{
 
 /*Vista 2*/
 
+.lista{
+  overflow: hidden;
+  white-space: nowrap;
+}
+
 .fila{
   position: inherit;
-  padding-left: 2px;
-  padding-right: 2px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .imagen-f{
+  margin-right: 1px;
   margin-bottom: 0px;
   max-width: 100%;
   height: 100px;
+  padding: 1px;
 }
 
-.img-grande{
+.imgCar{
   margin-bottom: 0px;
   max-width: 100%;
+  height: 100%;
 }
 
 .imgGrande{
-  margin-top: 26px;
+  margin-top: 10px;
+  position: relative;
+  perspective: 1100px;
+  height: 100%;
+  overflow: hidden;
+}
+
+
+.bordes{
+  padding: 2px;
+  background-color: inherit;
+  margin-bottom: 0px;
+  border-color: transparent;
 }
 
 .flecha{
@@ -187,7 +216,7 @@ h1{
   color: #3A9CF2;
 }
 
-.like-f{
+.likeCar{
   font-size: 26px;
   text-align: center;
   top: -37px;
@@ -195,4 +224,106 @@ h1{
   background-color: white;
   margin: 0px;
   opacity: 0.6;
+}
+
+#carrousel{
+  transform: translateZ(-1400px);
+  transform-style: preserve-3d;
+  transition: transform 1s;
+  width: 100%;
+  margin: 20px auto;
+  height: 100%;
+}
+
+.figureCar{
+  margin: 0;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 90%;
+}
+
+.divCar{
+  margin: 0 auto;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 95%;
+}
+
+.anterior {
+  transform: rotateY(-40deg) translateZ(1400px);
+  transition: transform 2s;
+}
+
+.select {
+  transform: rotateY(0deg) translateZ(1400px);
+  transition: transform 2s;
+}
+
+.posterior {
+  transform: rotateY(40deg ) translateZ(1400px);
+  transition: transform 2s;
+}
+
+.latir{
+  animation: latidos 0.5s infinite;
+}
+
+.girar3d{
+  animation: gira3d 1.0s infinite;
+}
+
+.rotar{
+  animation: rota 1.0s infinite;
+}
+
+@keyframes latidos {
+    from { transform: none; }
+    50% { transform: scale(1.4); }
+    to { transform: none; }
+}
+
+@keyframes gira3d {
+    from { transform: perspective(400px) rotateY(0deg) }
+    to { transform: perspective(400px) rotateY(360deg) }
+}
+
+@keyframes rota {
+    from { transform: rotate(0deg) }
+    to { transform: rotate(360deg) }
+}
+
+
+html{
+  height: 100%;
+}
+
+.rowTamC{
+  height: 1%;
+}
+
+.rowTamG{
+  height: 80%;
+}
+
+.imgSelect{
+  border: solid #3A9CF2 1px;
+}
+
+.girarAtras {
+  transform: rotate(0deg) translateZ(0px);
+  transition: transform 1s;
+}
+
+.girarAdelante {
+  transform: rotate(360deg) translateZ(1400px);
+  transition: transform 1s;
+}
+
+.ocultar {
+  display: none;
+}
+
+#lista {
+  transition: transform .5s;
 }

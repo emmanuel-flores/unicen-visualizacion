@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Api Fotos</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/estilos.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Principal -->
+  <div class= "presentacion">
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+            <img class="logo" alt="Brand" src="images\logo.png">
+          </a>
+        </div>
+        <span type="button" id="nocturnop" class="lnr lnr-moon hceleste nocturno navbar-brand navbar-right"></span>
+        <form id="formulariop" class="formulario" role="search">
+          <div class="form-group">
+            <input id="buscarp" name="buscp" type="text" class="form-control centrar buscar" placeholder="Buscar">
+          </div>
+        </form>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Contenido -->
+  <div class="dentro">
+    <div class="barra">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+              <img class="logo" alt="Brand" src="images\logo.png">
+            </a>
+          </div>
+          <div class="dropdown navbar-brand navbar-right">
+          <span class="glyphicon glyphicon-option-vertical dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></span>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li>VISTA: <a id="vista" class=" glyphicon glyphicon-blackboard" href="#"></a></li>
+              <li role="separator" class="divider"></li>
+              <li>TRANSICION FOTOS:</li>
+              <li><a  id="desplazar" href="#">DESPLAZAR</a></li>
+              <li><a id="girar" href="#">GIRAR</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#" class="lnr lnr-moon hceleste nocturno"> MODO NOCTURNO</a></li>
+            </ul>
+          </div>
+          <form id="formulario" class="navbar-form" role="search">
+            <div class="form-group centrar">
+              <input id="buscar" name="busc" type="text" class="form-control centrar buscar" placeholder="Buscar">
+            </div>
+          </form>
+        </div>
+      </nav>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h1 id="hash" >#Hashtag</h1>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grilla -->
+    <div id="cont" class="container contenedor"></div>
+
+    <!-- Carrousel -->
+    <div id="vist2" class="container contenedor desactivar">
+      <div class="row rowTamC">
+        <div class="col-sm-1 fila">
+        </div>
+        <div class="col-sm-10 fila lista">
+          <div id="lista">
+          </div>
+        </div>
+        <div class="col-sm-1 fila">
+        </div>
+      </div>
+      <div class="row rowTamG">
+        <div class="col-sm-10 col-sm-offset-1 imgGrande">
+          <div id="carrousel">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="js/jquery-3.1.0.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/codebird.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
